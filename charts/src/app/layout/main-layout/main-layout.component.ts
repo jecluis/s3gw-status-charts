@@ -12,11 +12,47 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
+import { FormControl, Validators } from "@angular/forms";
+import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
+import { GithubService } from "src/app/shared/services/github.service";
 
 @Component({
   selector: "s3gw-main-layout",
   templateUrl: "./main-layout.component.html",
   styleUrls: ["./main-layout.component.scss"],
 })
-export class MainLayoutComponent {}
+export class MainLayoutComponent implements OnInit {
+  public githubTokenFormControl = new FormControl("", Validators.required);
+
+  public constructor(
+    private modalService: NgbModal,
+    private ghSvc: GithubService,
+  ) {}
+
+  public ngOnInit(): void {}
+
+  public open(content: any) {
+    this.modalService.open(content);
+  }
+
+  public submitToken() {
+    console.log("has token: ", this.githubTokenFormControl.value);
+    if (
+      !this.githubTokenFormControl.value ||
+      this.githubTokenFormControl.value === ""
+    ) {
+      return;
+    }
+    this.ghSvc.setToken(this.githubTokenFormControl.value);
+    this.modalService.dismissAll();
+  }
+
+  public isTokenValid() {
+    return this.githubTokenFormControl.valid;
+  }
+
+  public hasToken(): boolean {
+    return this.ghSvc.hasToken();
+  }
+}
