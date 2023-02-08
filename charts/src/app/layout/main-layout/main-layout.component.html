@@ -15,21 +15,37 @@ limitations under the License.
 -->
 
 <nav
-  class="navbar navbar-expand navbar-dark bg-dark position-fixed top-0 w-100"
->
+     class="navbar navbar-expand navbar-dark bg-dark position-fixed top-0 w-100">
   <div class="container-fluid">
-    <div class="d-flex">
-      <form class="form-control-sm form-floating">
-        <label for="github-token-input" class="col-form-label-sm"
-          >GitHub Token</label
-        >
-        <input class="form-text" id="github-token-input" type="text" />
-        <button class="btn btn-sm btn-outline-warning">Submit</button>
-      </form>
-    </div>
+    <button class="btn btn-success" (click)="open(githubModal)"
+            *ngIf="!hasToken()">
+      Set GitHub Token
+    </button>
+    <button class="btn btn-danger" (click)="open(githubModal)"
+            *ngIf="hasToken()">Reset GitHub Token</button>
   </div>
 </nav>
 
-<div style="padding-top: 40px">
+<div style="padding-top: 54px">
   <router-outlet></router-outlet>
 </div>
+
+<ng-template #githubModal let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="github-modal-title">Set GitHub Token</h4>
+    <button type="button" class="btn-close" aria-label="Close"
+            (click)="modal.dismiss()"></button>
+  </div>
+  <div class="modal-body">
+
+    <div class="input-group mb-3">
+      <span class="input-group-text">Token</span>
+      <input type="text" class="form-control" placeholder="GitHub API Token"
+             [formControl]="githubTokenFormControl" />
+      <button type="button" class="btn btn-warning" (click)="submitToken()"
+              [disabled]="!isTokenValid()">Submit</button>
+    </div>
+
+  </div>
+
+</ng-template>
