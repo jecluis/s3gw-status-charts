@@ -187,7 +187,7 @@ export class RadarComponent implements OnInit, OnChanges, OnDestroy {
         r: r,
         theta: theta,
         fill: "toself",
-        name: "group A",
+        name: "open issues, by epic",
       },
     ];
 
@@ -227,7 +227,7 @@ export class RadarComponent implements OnInit, OnChanges, OnDestroy {
         r: r,
         theta: kinds,
         fill: "toself",
-        name: "issue kind",
+        name: "open issues, by kind",
       },
     ];
 
@@ -258,7 +258,7 @@ export class RadarComponent implements OnInit, OnChanges, OnDestroy {
         r: r,
         theta: areas,
         fill: "toself",
-        name: "issue kind",
+        name: "open issues, by area",
       },
     ];
 

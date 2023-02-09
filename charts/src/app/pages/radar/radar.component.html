@@ -14,22 +14,70 @@ See the License for the specific language governing permissions and
 limitations under the License.
 -->
 
-<div #epicsPlot>
-  <ng-content></ng-content>
-</div>
+<div class="mt-3">
 
-<div #kindsPlot>
-  <ng-content></ng-content>
-</div>
+  <div class="row">
+    <div class="card col-12 col-xxl-6">
+      <div class="card-header">
+        <h5 class="card-title fw-bold">by epic</h5>
+      </div>
+      <div class="card-body">
+        <div #epicsPlot>
+          <ng-content></ng-content>
+        </div>
+      </div>
+    </div>
 
-<div #areasPlot>
-  <ng-content></ng-content>
-</div>
+    <div class="card col-12 col-xxl-6">
+      <div class="card-header">
+        <h5 class="card-title fw-bold">by Kind</h5>
+      </div>
+      <div class="card-body">
+        <div #kindsPlot>
+          <ng-content></ng-content>
+        </div>
+      </div>
+    </div>
+  </div>
 
-<div #byStateKindsPlot>
-  <ng-content></ng-content>
-</div>
+  <div class="row">
 
-<div #byStateAreaPlot>
-  <ng-content></ng-content>
+    <div class="card col-12 col-xxl-6">
+      <div class="card-header">
+        <h5 class="card-title fw-bold">by Area</h5>
+      </div>
+      <div class="card-body">
+        <div #areasPlot>
+          <ng-content></ng-content>
+        </div>
+      </div>
+    </div>
+
+    <div class="card col-12 col-xxl-6">
+      <div class="card-header">
+        <h5 class="card-title fw-bold">by State, Kind</h5>
+      </div>
+      <div class="card-body">
+        <div #byStateKindsPlot>
+          <ng-content></ng-content>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="row">
+    <div class="card col-12 col-xxl-6">
+      <div class="card-header">
+        <h5 class="card-title fw-bold">by State, Area</h5>
+      </div>
+      <div class="card-body">
+        <div #byStateAreaPlot>
+          <ng-content></ng-content>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
 </div>
